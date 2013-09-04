@@ -30,9 +30,9 @@ require.config({
         }
     }
 });
-require(["jquery", 
-    "underscore", 
-    "backbone", 
+require(["jquery",
+    "underscore",
+    "backbone",
     "socket.io",
     "responsibilityCollection",
     "addResponsibilityView",
@@ -40,15 +40,24 @@ require(["jquery",
     ], function($, _, Backbone, io, ResponsibilityCollection, AddResponsibilityView, CalendarView) {
     var socket = io.connect();
 
-    $(".send").click(function() {
-        socket.emit("add", "jiminy!");
-    });
-
     var responsibilityCollection = new ResponsibilityCollection();
-    var addView = new AddResponsibilityView({ 
+    var addView = new AddResponsibilityView({
         el: $("form#addResponsibility"),
         collection: responsibilityCollection
      });
+
+    responsibilityCollection.on("add", function(model) {
+        socket.emit("add", model);
+    });
+    
+    $(".send").click(function() {
+        var model = {
+            mesharet: $("#personInput").val(),
+            date: $("#dateInput").val,
+            description: $("#descriptionInput").val
+        };
+        responsibilityCollection.add(model);
+    });
 
     var listView = new CalendarView({
         el: $("#calendar"),

@@ -16,7 +16,7 @@ var io = socketIo.listen(server);
 io.sockets.on("connection", function(socket) {
 	console.log("made connection");
 	socket.on("add", function(data) {
-		console.log("added: " + data);
+		console.log("added: " + data.mesharet);
 	});
 });
 
