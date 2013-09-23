@@ -15,7 +15,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       './specs/test-main.js',
-      {pattern: 'public/scripts/*.js', included: false},
+      {pattern: 'public/scripts/**/*.js', included: false},
       {pattern: 'public/scripts/specs/*Spec.js', included: false}
     ],
 
@@ -45,7 +45,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:
@@ -56,7 +56,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Firefox', 'Chrome'],
+    browsers: ['Firefox', 'Chrome', 'PhantomJS'],
 
 
     // If browser does not capture in given timeout [ms], kill it
@@ -65,6 +65,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true
+    singleRun: false
   });
 };

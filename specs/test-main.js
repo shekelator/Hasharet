@@ -12,10 +12,10 @@ requirejs.config({
 	baseUrl: '/base/public/scripts',
 
 	paths: {
-        "text": "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text",
-        "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min",
-        "underscore": "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min",
-        "backbone": "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min"
+        "text": "require-text/2.0.10/text",
+        "jquery": "jquery/1.8.2/jquery.min",
+        "underscore": "underscore/1.4.4/underscore-min",
+        "backbone": "backbone/1.0.0/backbone-min"
 	},
 
 	shim: {
