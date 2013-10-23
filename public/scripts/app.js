@@ -49,14 +49,16 @@ require(["jquery",
         socket.emit("add", model);
     });
     
-    $(".send").click(function() {
-        var model = {
-            mesharet: $("#personInput").val(),
-            date: $("#dateInput").val,
-            description: $("#descriptionInput").val
-        };
-        responsibilityCollection.add(model);
-    });
+//   $(".send").click(function() {
+//       var model = {
+//           mesharet: $("#personInput").val(),
+//           date: $("#dateInput").val,
+//           description: $("#descriptionInput").val
+//       };
+//       responsibilityCollection.add(model);
+//   });
+
+    
 
     var listView = new CalendarView({
         el: $("#calendar"),
