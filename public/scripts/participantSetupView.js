@@ -1,14 +1,14 @@
 define(["jquery",
     "underscore",
     "backbone",
-    "serviceSetupModel",
-    "serviceSetupCollection",
-    "text!serviceSetupTemplate.html"
-    ], function($, _, Backbone, Model, ServiceSetupCollection, template) {
+    "participantModel",
+    "participantCollection",
+    "text!participantSetupTemplate.html"
+    ], function($, _, Backbone, ParticipantModel, ParticipantCollection, template) {
 
     var serviceSetupView = Backbone.View.extend({
     	initialize: function() {
-    		this.collection = new ServiceSetupCollection();
+    		this.collection = new ParticipantCollection();
     		this.collection.fetch();
     		this.render();
     	},

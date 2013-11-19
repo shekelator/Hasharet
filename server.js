@@ -12,7 +12,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.get("/api/calendar", function(req, res) {
-	var body = { calendar: [ { "ServiceDate": "2013-10-26"}, {"ServiceDate": "2013-11-02"}]};
+	var body = [{ "ServiceDate": "2013-10-26"}, {"ServiceDate": "2013-11-02"}];
 	res.setHeader("Content-Type", "application/json");
 	res.send(body);
 });

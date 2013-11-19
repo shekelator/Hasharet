@@ -33,21 +33,40 @@ require(["jquery",
     "underscore",
     "backbone",
     "socket.io",
-    "serviceSetupView"
-    ], function($, _, Backbone, io, ServiceSetupView) {
+    "serviceSetupView",
+    "participantSetupView"
+    ], function($, _, Backbone, io, ServiceSetupView, ParticipantSetupView) {
     var socket = io.connect();
 
     var AppRouter = Backbone.Router.extend({
+
         routes: {
             "serviceSetup": "serviceSetup",
-            "participantsSetup": "participantsSetup"
+            "participantSetup": "participantSetup"
         },
 
         serviceSetup: function() {
             var view = new ServiceSetupView({el: $("#serviceSetup")});
+            this.render(view);
         },
 
-        participantsSetup: function() {}
+        participantSetup: function() {
+
+            var view = new ParticipantSetupView({ el: $("#participantSetup")});
+            this.render(view);
+        }, 
+
+        render: function(newView) {
+            if(this.currentView) {
+                this.currentView.remove();
+            }
+
+            newView.render();
+            
+            this.currentView = newView;
+
+            return this;
+        }
     });
 
     var appRouter = new AppRouter();

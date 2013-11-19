@@ -2,11 +2,11 @@ require(["jquery",
     "underscore",
     "backbone"], function($, _, Backbone) {
 
-    var serviceSetupModel = Backbone.Model.extend({
+    var participantModel = Backbone.Model.extend({
     	attributes: {
-    		serviceDate: undefined
+    		name: undefined
     	}
     });
 
-    return serviceSetupModel;
+    return participantModel;
 });
