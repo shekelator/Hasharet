@@ -10,7 +10,8 @@ define(["jquery",
     	initialize: function() {
     		this.collection = new ServiceSetupCollection();
     		this.collection.fetch();
-    		this.render();
+
+            this.listenTo(this.collection, "add", this.render);
     	},
 
     	render: function() {

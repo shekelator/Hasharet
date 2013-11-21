@@ -1,9 +1,9 @@
-require(["jquery",
+define(["jquery",
     "underscore",
     "backbone"], function($, _, Backbone) {
 
     var serviceSetupModel = Backbone.Model.extend({
-    	attributes: {
+    	defaults: {
     		serviceDate: undefined
     	}
     });

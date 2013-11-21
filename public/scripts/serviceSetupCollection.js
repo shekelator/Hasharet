@@ -2,13 +2,10 @@ define(["jquery",
     "underscore",
     "backbone",
     "serviceSetupModel",
-    ], function($, _, Backbone, serviceSetupModel) {
+    ], function($, _, Backbone, ServiceSetupModel) {
 
     var serviceCollection = Backbone.Collection.extend({
-        model: serviceSetupModel,
-
-    	initialize: function() {
-    	},
+        model: ServiceSetupModel,
 
         url: "../../api/calendar"
     });
