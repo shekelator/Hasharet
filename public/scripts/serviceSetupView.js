@@ -7,6 +7,9 @@ define(["jquery",
     ], function($, _, Backbone, Model, ServiceSetupCollection, template) {
 
     var serviceSetupView = Backbone.View.extend({
+        tagName: "div",
+        id: "serviceSetup",
+
     	initialize: function() {
     		this.collection = new ServiceSetupCollection();
     		this.collection.fetch();
@@ -18,6 +21,7 @@ define(["jquery",
     		var compiled = _.template(template);
     		var html = compiled({ "services": this.collection.toJSON() });
     		this.$el.html(html);
+            return this;
     	}
     });
 

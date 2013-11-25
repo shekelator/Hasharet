@@ -6,7 +6,10 @@ define(["jquery",
     "text!participantSetupTemplate.html"
     ], function($, _, Backbone, ParticipantModel, ParticipantCollection, template) {
 
-    var serviceSetupView = Backbone.View.extend({
+    var participantSetupView = Backbone.View.extend({
+        tagName: "div",
+        id: "participantSetup",
+
     	initialize: function() {
     		this.collection = new ParticipantCollection();
     		this.collection.fetch();
@@ -17,8 +20,9 @@ define(["jquery",
     		var compiled = _.template(template);
     		var html = compiled({ "services": this.collection.toJSON() });
     		this.$el.html(html);
+            return this;
     	}
     });
 
-    return serviceSetupView;
+    return participantSetupView;
 });

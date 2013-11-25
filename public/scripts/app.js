@@ -46,13 +46,13 @@ require(["jquery",
         },
 
         serviceSetup: function() {
-            var view = new ServiceSetupView({el: $("#serviceSetup")});
+            var view = new ServiceSetupView();
             this.render(view);
         },
 
         participantSetup: function() {
 
-            var view = new ParticipantSetupView({ el: $("#participantSetup")});
+            var view = new ParticipantSetupView();
             this.render(view);
         }, 
 
@@ -64,6 +64,8 @@ require(["jquery",
             newView.render();
             
             this.currentView = newView;
+
+            newView.$el.appendTo("div#main");
 
             return this;
         }
