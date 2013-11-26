@@ -1,5 +1,4 @@
 // Tests for server.js
-
 var server = require("../server");
 var request = require("request");
 
@@ -9,5 +8,9 @@ describe("Server ", function() {
 			expect(body).toContain("Home!");
 			done();
 		});
-	})
+	});
+
+	it("runs the tests correctly", function() {
+		expect("taco").toBe("taco");
+	});
 });

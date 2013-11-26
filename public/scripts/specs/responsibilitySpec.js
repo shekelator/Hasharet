@@ -1,7 +1,7 @@
-define(["backbone", "responsibility"], function(Backbone, Responsibility) {
+define(["backbone", "serviceSetupModel"], function(Backbone, ServiceSetupModel) {
 	describe("test runs", function() {
 		it("first test", function() {
-			var r = new Responsibility();
+			var r = new ServiceSetupModel();
 			expect(typeof r.get).toBe("function");
 		});
 
@@ -11,7 +11,7 @@ define(["backbone", "responsibility"], function(Backbone, Responsibility) {
 		});
 
 		it("third test", function() {
-			var r = new Responsibility({"mesharet": "Dave Nichol"});
+			var r = new ServiceSetupModel({"mesharet": "Dave Nichol"});
 			var m = r.get("mesharet");
 			expect(m).toBe("Dave Nichol");
 		});
