@@ -2,6 +2,9 @@ var http = require("http");
 var socketIo = require("socket.io");
 var express = require("express");
 var app = express();
+var calendar = require("./calendar");
+var hebCal = require("./hebCalWrapper");
+var moment = require("moment");
 
 app.use("/public", express.static("public"));
 app.use(express.json());
@@ -12,9 +15,12 @@ app.use(function(err, req, res, next) {
 });
 
 app.get("/api/calendar", function(req, res) {
-	var body = [{ "ServiceDate": "2013-10-26"}, {"ServiceDate": "2013-11-02"}];
-	res.setHeader("Content-Type", "application/json");
-	res.send(body);
+	hebCal.getShabbatot(moment().year(), function(err, data) {
+		var cal = new calendar(Date());
+		var body = cal.getUpcoming(data);
+		res.setHeader("Content-Type", "application/json");
+		res.send(body);
+	});
 });
 
 app.post("/api/calendar", function(req, res) {

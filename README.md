@@ -6,4 +6,6 @@ The app is a simple SPA that allows our synagogue to coordinate volunteer activi
 
 Planning to use Hebcal.com to get Shabbat dates and parashot (e.g. http://www.hebcal.com/hebcal/?v=1&cfg=json&nh=on&year=2013&month=11&mf=on&s=on). See http://www.hebcal.com/home/developer-apis for more info.
 
+Also hope to look at http://validatejs.org/ for validation, probably server-side.
+
 I'll probably make a royal poop out of this and hopefully rewrite it with Angular, Meteor, or something. 
