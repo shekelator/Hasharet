@@ -42,5 +42,20 @@ describe("Calendar API ", function() {
 		});
 	});
 
-	it("returns dates over multiple years");
+//	it("returns dates over multiple years", function(done) {
+//		request(host + "/api/calendar", function(error, response, body) {
+//			var now = moment("2013-12-20");
+//
+//			var datesIn2013 = _.some(data, function(item) {
+//				
+//			})
+//			expect(data.length).toBeGreaterThan(0);
+//
+//			_.each(data, function(item) {
+//				var serviceDate = moment(item.ServiceDate);
+//				expect(serviceDate.diff(now) >= 0).toBe(true);
+//			});
+//			done();
+//		})
+//	});
 });
