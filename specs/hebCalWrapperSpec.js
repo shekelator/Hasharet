@@ -26,9 +26,9 @@ describe("HebCalWrapper", function() {
 		hebCal.getShabbatot("2013-06-07", function(err, data) {
 			expect(data).not.toBeUndefined();
 
-			var hasYk = _(data).some({title: "Erev Yom Kippur", category: "holiday"});
+			var hasYk = _(data).some({title: "Erev Yom Kippur", type: "holiday"});
 			expect(hasYk).toBeTruthy();
-			var hasMishpatim = _(data).some({title: "Parashat Mishpatim", category: "parashat"});
+			var hasMishpatim = _(data).some({title: "Parashat Mishpatim", type: "shabbat"});
 			expect(hasMishpatim).toBeTruthy();
 
 			done();
@@ -68,4 +68,6 @@ describe("HebCalWrapper", function() {
 			done();
 		});
 	});
+
+	it("includes CH''M shabbatot but not weekdays");
 });

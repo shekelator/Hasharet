@@ -1,9 +1,12 @@
 var calendar = require("../calendar");
 var moment = require("moment");
 var _ = require("lodash-node");
+var sinon = require("sinon");
+require("jasmine-sinon");
 
 describe("Calendar", function() {
 		var dates;
+		var db;
 
 		beforeEach(function() {
 			dates = [{
@@ -41,28 +44,32 @@ describe("Calendar", function() {
 					link: "http://www.hebcal.com/sedrot/mishpatim",
 					hebrew: "פרשת משפטים"
 				}];
+
+				db = {};
+				db.getServices = sinon.stub();
+				db.getServices.returns([]);
 			});
 
 	it("returns dates", function(done) {
-		var cal = new calendar("2013-01-02");
+		var cal = new calendar("2013-01-02", db);
 		var result = cal.getUpcoming(dates);
 		expect(result.length).toBeGreaterThan(0);
 		done();
 	});
 
 	it("returns dates greater than current date", function(done) {
-		var cal = new calendar("2013-01-02");
+		var cal = new calendar("2013-01-02", db);
 		var result = cal.getUpcoming(dates);
 		expect(result.length).toBe(5);
 
-		var cal2 = new calendar("2013-01-20");
+		var cal2 = new calendar("2013-01-20", db);
 		result = cal2.getUpcoming(dates);
 		expect(result.length).toBe(4);
 		done();
 	});
 
 	it("returns saturdays", function(done) {
-		var cal = new calendar("2013-01-02");
+		var cal = new calendar("2013-01-02", db);
 		var result = cal.getUpcoming(dates);
 		var shabbatot = _.filter(result, {category: "parashat"});
 		expect(shabbatot.length).toBe(4);

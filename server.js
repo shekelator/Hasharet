@@ -15,7 +15,8 @@ app.use(function(err, req, res, next) {
 });
 
 app.get("/api/calendar", function(req, res) {
-	hebCal.getShabbatot(moment().year(), function(err, data) {
+	hebCal.getShabbatot(Date(), function(err, data) {
+		
 		var cal = new calendar(Date());
 		var body = cal.getUpcoming(data);
 		res.setHeader("Content-Type", "application/json");

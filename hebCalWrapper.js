@@ -4,6 +4,16 @@ var _ = require("lodash-node");
 
 var minimumNumberInThisYearToReturn = 10;
 
+var itemFilter = function(item) {
+	var type = item.category === "parashat" ? "shabbat" : "holiday";
+
+	return {
+		"date": item.date,
+		"type": type,
+		"title": item.title
+	};
+}
+
 var HebCalWrapper =  {
 	getShabbatot: function(date, callback) {
 		var self = this;
@@ -33,10 +43,10 @@ var HebCalWrapper =  {
 					}
 
 					var result = _.union(body.items, secondBody.items);
-					callback(error, result);
+					callback(error, _.map(result, itemFilter));
 				});
 			} else {
-				callback(error, body.items);
+				callback(error, _.map(body.items, itemFilter));
 			}
 		});
 	}
