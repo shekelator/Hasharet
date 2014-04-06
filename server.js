@@ -4,7 +4,7 @@ var express = require("express");
 var app = express();
 var calendar = require("./calendar");
 var hebCal = require("./hebCalWrapper");
-var moment = require("moment");
+var moment = require("moment");	
 
 app.use("/public", express.static("public"));
 app.use(express.json());
@@ -18,9 +18,14 @@ app.get("/api/calendar", function(req, res) {
 	hebCal.getShabbatot(Date(), function(err, data) {
 		
 		var cal = new calendar(Date());
-		var body = cal.getUpcoming(data);
-		res.setHeader("Content-Type", "application/json");
-		res.send(body);
+		cal.getUpcoming(data, function(err, results) {
+			if(err) { throw err; }
+			
+			var body = results;
+			res.setHeader("Content-Type", "application/json");
+			res.send(body);
+
+		});
 	});
 });
 
@@ -43,4 +48,4 @@ io.sockets.on("connection", function(socket) {
 
 server.listen(8085);
 
-console.log("server running");
+console.log("server running");	
