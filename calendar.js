@@ -7,7 +7,7 @@ var serviceDb = require("./serviceDb");
 
 var Calendar = function(currentDate) {
 
-	this.getUpcoming = function(shabbatot, callback) {
+	this.getUpcoming = function(callback) {
 		serviceDb.getServices(currentDate, callback);
 	};
 };

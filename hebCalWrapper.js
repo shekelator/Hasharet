@@ -46,7 +46,7 @@ var HebCalWrapper =  {
 					callback(error, _.map(result, itemFilter));
 				});
 			} else {
-				callback(error, _.map(body.items, itemFilter));
+				callback(error, _.map(itemsAfterEffectiveDate, itemFilter));
 			}
 		});
 	}

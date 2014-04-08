@@ -5,6 +5,7 @@ var app = express();
 var calendar = require("./calendar");
 var hebCal = require("./hebCalWrapper");
 var moment = require("moment");	
+var _ = require("lodash-node");
 
 app.use("/public", express.static("public"));
 app.use(express.json());
@@ -15,13 +16,18 @@ app.use(function(err, req, res, next) {
 });
 
 app.get("/api/calendar", function(req, res) {
-	hebCal.getShabbatot(Date(), function(err, data) {
+	hebCal.getShabbatot(Date(), function(err, shabbatot) {
 		
 		var cal = new calendar(Date());
-		cal.getUpcoming(data, function(err, results) {
+
+		cal.getUpcoming(function(err, scheduledShabbatot) {
 			if(err) { throw err; }
-			
-			var body = results;
+
+			var body = _.reject(shabbatot, function(item) {
+				var datesAlreadyCovered = _.pluck(scheduledShabbatot, "date");
+				return _.contains(datesAlreadyCovered, item.date);
+			});
+
 			res.setHeader("Content-Type", "application/json");
 			res.send(body);
 
