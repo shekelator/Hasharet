@@ -18,7 +18,7 @@ var db = {
 						return serviceDate.isAfter(currentDate);
 					});
 
-					callback(err, results);
+					callback(err, upcomingShabbatot);
 				});
 
 			});

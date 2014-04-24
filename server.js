@@ -17,9 +17,7 @@ app.use(function(err, req, res, next) {
 
 app.get("/api/calendar", function(req, res) {
 	hebCal.getShabbatot(Date(), function(err, shabbatot) {
-		
 		var cal = new calendar(Date());
-
 		cal.getUpcoming(function(err, scheduledShabbatot) {
 			if(err) { throw err; }
 
