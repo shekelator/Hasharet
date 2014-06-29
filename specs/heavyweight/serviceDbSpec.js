@@ -23,16 +23,14 @@ describe("serviceDb", function() {
 	});
 	
 	it("returns list of 1 after insert", function(done) {
-		
-		var getAndAssert = function() {
+		serviceDb.setService(newService, function() {
 			serviceDb.getServices(testDate, function(err, results) {
 				if(err) throw err;
 
 				expect(results.length).toBe(1);
 				done();
 			});
-		};
-		serviceDb.setService(newService, getAndAssert);
+		});
 
 	});
 
